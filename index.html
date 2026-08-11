@@ -9,7 +9,6 @@
   <title>A Little Something For You 🤍</title>
 
   <style>
-
     * {
       box-sizing: border-box;
       margin: 0;
@@ -111,10 +110,7 @@
       }
     }
 
-    /* Mobile */
-
     @media (max-width: 480px) {
-
       .card {
         padding: 20px;
       }
@@ -130,12 +126,9 @@
       .message {
         font-size: 15px;
       }
-
     }
-
   </style>
 </head>
-
 
 <body>
 
@@ -143,54 +136,26 @@
 
     <div class="card" id="card">
 
-      <!-- =========================
-           IMAGE
-      ========================== -->
-
       <div class="image-container">
-
         <img
           id="slideImage"
           src="slide1.gif"
           alt="A little something for you"
         >
-
       </div>
-
-
-      <!-- =========================
-           TITLE
-      ========================== -->
 
       <h1 id="title">
         Hiii dear 🥺
       </h1>
 
-
-      <!-- =========================
-           MESSAGE
-      ========================== -->
-
       <div class="message" id="message">
-
         I made this little something for you.
         Nothing big, I just want to make your day even a little bit better. 🤍
-
       </div>
-
-
-      <!-- =========================
-           BUTTON
-      ========================== -->
 
       <button id="nextButton" onclick="nextSlide()">
         Open this 🤍
       </button>
-
-
-      <!-- =========================
-           PROGRESS
-      ========================== -->
 
       <div class="progress" id="progress">
         1 / 5
@@ -200,159 +165,87 @@
 
   </div>
 
-
-  <!-- =========================
-       BACKGROUND MUSIC
-  ========================== -->
-
   <audio id="bgMusic" loop>
-
     <source src="music.mp3" type="audio/mpeg">
-
   </audio>
-
 
   <script>
 
-    /* =========================
-       BACKGROUND MUSIC
-    ========================= */
-
     const music = document.getElementById("bgMusic");
-
-
-    /* =========================
-       SLIDES
-    ========================= */
 
     const slides = [
 
       {
         image: "slide1.gif",
-
         title: "Hiii dear 🥺",
-
         message:
           "I made this little something for you. Nothing big, I just want to make your day even a little bit better. 🤍"
       },
 
       {
         image: "slide2.jpg",
-
         title: "Just a little reminder 🤍",
-
         message:
           "And hey, no need to say sorry for what you’re feeling, okay? Lahat naman tayo may bad days. It’s okay to not feel okay sometimes."
       },
 
       {
         image: "slide3.gif",
-
         title: "Take your time 🫶🏻",
-
         message:
           "You don’t have to force yourself to be okay or pretend na everything’s fine. Take your time lang. I’ll understand."
       },
 
       {
         image: "slide4.jpg",
-
         title: "I'm here 🤍",
-
         message:
           "You don’t have to talk to me if you don’t feel like it. But if you ever need someone to listen, rant to, or even just sit with you in silence… I’m here."
       },
 
       {
         image: "slide5.jpg",
-
         title: "One last thing ❤️",
-
         message:
           "So for now, pahinga ka muna, dear. Be gentle with yourself. And hopefully, this little thing made you smile kahit konti. 🤍"
       }
 
     ];
 
-
-    /* =========================
-       VARIABLES
-    ========================== */
-
     let currentSlide = 0;
-
-
-    /* =========================
-       NEXT SLIDE
-    ========================== */
 
     function nextSlide() {
 
-      /* Start music on first click */
-
-      if (music && music.paused) {
-
-        music.play().catch(error => {
-
+      if (music.paused) {
+        music.play().catch(function(error) {
           console.log("Music could not play:", error);
-
         });
-
       }
-
-
-      /* Move to next slide */
 
       currentSlide++;
 
-
-      /* If all slides are finished */
-
       if (currentSlide >= slides.length) {
-
         showFinalMessage();
-
         return;
-
       }
-
-
-      /* Restart card animation */
 
       const card = document.getElementById("card");
 
       card.style.animation = "none";
-
       card.offsetHeight;
-
       card.style.animation = "fadeIn 0.5s ease";
-
-
-      /* Change image */
 
       document.getElementById("slideImage").src =
         slides[currentSlide].image;
 
-
-      /* Change title */
-
       document.getElementById("title").innerText =
         slides[currentSlide].title;
-
-
-      /* Change message */
 
       document.getElementById("message").innerText =
         slides[currentSlide].message;
 
-
-      /* Change progress */
-
       document.getElementById("progress").innerText =
         `${currentSlide + 1} / ${slides.length}`;
-
-
-      /* Change button text */
 
       if (currentSlide === slides.length - 1) {
 
@@ -365,45 +258,24 @@
           "Next 🤍";
 
       }
-
     }
 
-
-    /* =========================
-       FINAL MESSAGE
-    ========================== */
-
     function showFinalMessage() {
-
-      /* Final GIF */
 
       document.getElementById("slideImage").src =
         "final.gif";
 
-
-      /* Final title */
-
       document.getElementById("title").innerText =
         "Yayy nakangiti na syaaa! 🥺🤍";
-
-
-      /* Final message */
 
       document.getElementById("message").innerText =
         "Now give me that pretty smile. You deserve to have good days too. 🤍";
 
-
-      /* Hide button */
-
       document.getElementById("nextButton").style.display =
         "none";
 
-
-      /* Final progress */
-
       document.getElementById("progress").innerText =
         "Made with love 🤍";
-
     }
 
   </script>
