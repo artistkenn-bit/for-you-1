@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>A Little Something For You 🤍</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Arial", sans-serif;
+      background: linear-gradient(135deg, #fff1f5, #f8f0ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      color: #444;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 430px;
+      text-align: center;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 28px;
+      padding: 25px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+      animation: fadeIn 0.5s ease;
+    }
+
+    .image-container {
+      width: 100%;
+      height: 280px;
+      border-radius: 22px;
+      overflow: hidden;
+      margin-bottom: 25px;
+      background: #f8f8f8;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    .message {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #666;
+      min-height: 105px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    button {
+      border: none;
+      background: #ff8fab;
+      color: white;
+      padding: 13px 28px;
+      border-radius: 30px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.25s;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .progress {
+      margin-top: 18px;
+      font-size: 13px;
+      color: #aaa;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="card" id="card">
+
+      <div class="image-container">
+        <img id="slideImage" src="images/slide1.gif" alt="A little something for you">
+      </div>
+
+      <h1 id="title">Hiii dear 🥺</h1>
+
+      <div class="message" id="message">
+        I made this little something for you.
+        Nothing big, I just want to make your day even a little bit better. 🤍
+      </div>
+
+      <button id="nextButton" onclick="nextSlide()">
+        Open this 🤍
+      </button>
+
+      <div class="progress" id="progress">
+        1 / 5
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <script>
+
+    const slides = [
+      {
+        image: "images/slide1.gif",
+        title: "Hiii dear 🥺",
+        message:
+          "I made this little something for you. Nothing big, I just want to make your day even a little bit better."
+      },
+
+      {
+        image: "images/slide2.jpg",
+        title: "Just a little reminder 🤍",
+        message:
+          "And hey, no need to say sorry for what you’re feeling, okay? Lahat naman tayo may bad days. It’s okay to not feel okay sometimes."
+      },
+
+      {
+        image: "images/slide3.gif",
+        title: "Take your time 🫶🏻",
+        message:
+          "You don’t have to force yourself to be okay or pretend na everything’s fine. Take your time lang. I’ll understand."
+      },
+
+      {
+        image: "images/slide4.jpg",
+        title: "I'm here 🤍",
+        message:
+          "You don’t have to talk to me if you don’t feel like it. But if you ever need someone to listen, rant to, or even just sit with you in silence… I’m here."
+      },
+
+      {
+        image: "images/slide5.jpg",
+        title: "One last thing ❤️",
+        message:
+          "So for now, pahinga ka muna, dear. Be gentle with yourself. And hopefully, this little thing made you smile kahit konti. 🤍"
+      }
+    ];
+
+    let currentSlide = 0;
+
+    function nextSlide() {
+
+      currentSlide++;
+
+      if (currentSlide >= slides.length) {
+        showFinalMessage();
+        return;
+      }
+
+      const card = document.getElementById("card");
+
+      // restart animation
+      card.style.animation = "none";
+      card.offsetHeight;
+      card.style.animation = "fadeIn 0.5s ease";
+
+      document.getElementById("slideImage").src =
+        slides[currentSlide].image;
+
+      document.getElementById("title").innerText =
+        slides[currentSlide].title;
+
+      document.getElementById("message").innerText =
+        slides[currentSlide].message;
+
+      document.getElementById("progress").innerText =
+        `${currentSlide + 1} / ${slides.length}`;
+
+      if (currentSlide === slides.length - 1) {
+        document.getElementById("nextButton").innerText =
+          "Smile for me? 🥺";
+      } else {
+        document.getElementById("nextButton").innerText =
+          "Next 🤍";
+      }
+    }
+
+    function showFinalMessage() {
+
+      document.getElementById("slideImage").src =
+        "images/final.gif";
+
+      document.getElementById("title").innerText =
+        "Thereee, that's better. 😌";
+
+      document.getElementById("message").innerText =
+        "Now give me that pretty smile. You deserve to have good days too. 🤍";
+
+      document.getElementById("nextButton").style.display =
+        "none";
+
+      document.getElementById("progress").innerText =
+        "Made with love 🤍";
+    }
+
+  </script>
+
+</body>
+</html>
