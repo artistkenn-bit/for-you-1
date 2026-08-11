@@ -1,5 +1,7 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +9,7 @@
   <title>A Little Something For You 🤍</title>
 
   <style>
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -109,7 +112,9 @@
     }
 
     /* Mobile */
+
     @media (max-width: 480px) {
+
       .card {
         padding: 20px;
       }
@@ -125,9 +130,12 @@
       .message {
         font-size: 15px;
       }
+
     }
+
   </style>
 </head>
+
 
 <body>
 
@@ -135,32 +143,55 @@
 
     <div class="card" id="card">
 
-      <!-- IMAGE -->
+      <!-- =========================
+           IMAGE
+      ========================== -->
+
       <div class="image-container">
+
         <img
           id="slideImage"
           src="slide1.gif"
           alt="A little something for you"
         >
+
       </div>
 
-      <!-- TITLE -->
+
+      <!-- =========================
+           TITLE
+      ========================== -->
+
       <h1 id="title">
         Hiii dear 🥺
       </h1>
 
-      <!-- MESSAGE -->
+
+      <!-- =========================
+           MESSAGE
+      ========================== -->
+
       <div class="message" id="message">
+
         I made this little something for you.
         Nothing big, I just want to make your day even a little bit better. 🤍
+
       </div>
 
-      <!-- BUTTON -->
+
+      <!-- =========================
+           BUTTON
+      ========================== -->
+
       <button id="nextButton" onclick="nextSlide()">
         Open this 🤍
       </button>
 
-      <!-- PROGRESS -->
+
+      <!-- =========================
+           PROGRESS
+      ========================== -->
+
       <div class="progress" id="progress">
         1 / 5
       </div>
@@ -170,7 +201,25 @@
   </div>
 
 
+  <!-- =========================
+       BACKGROUND MUSIC
+  ========================== -->
+
+  <audio id="bgMusic" loop>
+
+    <source src="music.mp3" type="audio/mpeg">
+
+  </audio>
+
+
   <script>
+
+    /* =========================
+       BACKGROUND MUSIC
+    ========================= */
+
+    const music = document.getElementById("bgMusic");
+
 
     /* =========================
        SLIDES
@@ -228,35 +277,47 @@
 
     /* =========================
        VARIABLES
-    ========================= */
+    ========================== */
 
     let currentSlide = 0;
 
 
     /* =========================
        NEXT SLIDE
-    ========================= */
+    ========================== */
 
     function nextSlide() {
 
+      /* Start music on first click */
+
+      if (music && music.paused) {
+
+        music.play().catch(error => {
+
+          console.log("Music could not play:", error);
+
+        });
+
+      }
+
+
+      /* Move to next slide */
+
       currentSlide++;
 
-      /*
-        If all slides are finished,
-        show the final message.
-      */
+
+      /* If all slides are finished */
 
       if (currentSlide >= slides.length) {
 
         showFinalMessage();
 
         return;
+
       }
 
 
-      /*
-        Restart animation
-      */
+      /* Restart card animation */
 
       const card = document.getElementById("card");
 
@@ -267,41 +328,31 @@
       card.style.animation = "fadeIn 0.5s ease";
 
 
-      /*
-        Change image
-      */
+      /* Change image */
 
       document.getElementById("slideImage").src =
         slides[currentSlide].image;
 
 
-      /*
-        Change title
-      */
+      /* Change title */
 
       document.getElementById("title").innerText =
         slides[currentSlide].title;
 
 
-      /*
-        Change message
-      */
+      /* Change message */
 
       document.getElementById("message").innerText =
         slides[currentSlide].message;
 
 
-      /*
-        Change progress
-      */
+      /* Change progress */
 
       document.getElementById("progress").innerText =
         `${currentSlide + 1} / ${slides.length}`;
 
 
-      /*
-        Change button text
-      */
+      /* Change button text */
 
       if (currentSlide === slides.length - 1) {
 
@@ -320,45 +371,35 @@
 
     /* =========================
        FINAL MESSAGE
-    ========================= */
+    ========================== */
 
     function showFinalMessage() {
 
-      /*
-        Final GIF
-      */
+      /* Final GIF */
 
       document.getElementById("slideImage").src =
         "final.gif";
 
 
-      /*
-        Final title
-      */
+      /* Final title */
 
       document.getElementById("title").innerText =
-        "Thereee, that's better. 😌";
+        "Yayy nakangiti na syaaa! 🥺🤍";
 
 
-      /*
-        Final message
-      */
+      /* Final message */
 
       document.getElementById("message").innerText =
         "Now give me that pretty smile. You deserve to have good days too. 🤍";
 
 
-      /*
-        Hide button
-      */
+      /* Hide button */
 
       document.getElementById("nextButton").style.display =
         "none";
 
 
-      /*
-        Final progress text
-      */
+      /* Final progress */
 
       document.getElementById("progress").innerText =
         "Made with love 🤍";
@@ -368,4 +409,6 @@
   </script>
 
 </body>
+
 </html>
+```
