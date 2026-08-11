@@ -1,11 +1,9 @@
-```html
 <!DOCTYPE html>
-<html lang="en">
 
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>A Little Something For You 🤍</title>
 
   <style>
@@ -128,53 +126,51 @@
       }
     }
   </style>
+
 </head>
 
 <body>
 
   <div class="container">
-
     <div class="card" id="card">
 
-      <div class="image-container">
-        <img
-          id="slideImage"
-          src="slide1.gif"
-          alt="A little something for you"
-        >
-      </div>
+```
+  <div class="image-container">
+    <img
+      id="slideImage"
+      src="slide1.gif"
+      alt="A little something for you"
+    >
+  </div>
 
-      <h1 id="title">
-        Hiii dear 🥺
-      </h1>
+  <h1 id="title">Hiii dear 🥺</h1>
 
-      <div class="message" id="message">
-        I made this little something for you.
-        Nothing big, I just want to make your day even a little bit better. 🤍
-      </div>
+  <div class="message" id="message">
+    I made this little something for you.
+    Nothing big, I just want to make your day even a little bit better. 🤍
+  </div>
 
-      <button id="nextButton" onclick="nextSlide()">
-        Open this 🤍
-      </button>
+  <button id="nextButton" onclick="nextSlide()">
+    Open this 🤍
+  </button>
 
-      <div class="progress" id="progress">
-        1 / 5
-      </div>
+  <div class="progress" id="progress">
+    1 / 5
+  </div>
 
-    </div>
+</div>
+```
 
   </div>
 
-  <audio id="bgMusic" loop>
+  <audio id="bgMusic" loop preload="auto">
     <source src="music.mp3" type="audio/mpeg">
   </audio>
 
   <script>
-
     const music = document.getElementById("bgMusic");
 
     const slides = [
-
       {
         image: "slide1.gif",
         title: "Hiii dear 🥺",
@@ -209,7 +205,6 @@
         message:
           "So for now, pahinga ka muna, dear. Be gentle with yourself. And hopefully, this little thing made you smile kahit konti. 🤍"
       }
-
     ];
 
     let currentSlide = 0;
@@ -248,15 +243,11 @@
         `${currentSlide + 1} / ${slides.length}`;
 
       if (currentSlide === slides.length - 1) {
-
         document.getElementById("nextButton").innerText =
           "Smile for me? 🥺";
-
       } else {
-
         document.getElementById("nextButton").innerText =
           "Next 🤍";
-
       }
     }
 
@@ -277,10 +268,7 @@
       document.getElementById("progress").innerText =
         "Made with love 🤍";
     }
-
   </script>
 
 </body>
-
 </html>
-```
